@@ -1,0 +1,26 @@
+{
+  "templateSheet": "1-wN8QJAaAE5zzIMcbfPPchPWAGFj6BnpZrU72Fp6cm4",
+  "files": [
+    "index.html",
+    "graphic.js",
+    "graphic.less",
+    "*.png",
+    "*.jpg",
+    "*.json",
+    "!manifest.json",
+    "*.geojson",
+    "*.csv"
+  ],
+  "sheet": "1MoWuIEffw04bZaLQJfCRM-9_5Bvnh_Yca9hK4jdaRr0",
+  "installedPackagesAtCreation": {
+    "d3": "^5.9.2",
+    "d3-array": "^2.0.3",
+    "d3-axis": "^1.0.12",
+    "d3-scale": "^3.0.0",
+    "d3-selection": "^1.4.0",
+    "d3-shape": "^1.3.5",
+    "d3-svg": "^0.2.2",
+    "file-saver": "^2.0.1",
+    "jquery": "^3.4.0"
+  }
+}
