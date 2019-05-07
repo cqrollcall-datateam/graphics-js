@@ -1,0 +1,40 @@
+@import "./lib/base";
+
+.lines {
+  fill: none;
+  stroke-width: 3px;
+  stroke: #ccc;
+}
+
+.axis line {
+    stroke-width: 3px;
+}
+
+.grid .tick {
+    stroke: #78797C;
+    color: #78797C;
+}
+
+.value text {
+  font-size: 0.9em;
+  fill: #444446;
+  font-family: GothamNarrow-Bold, "Helvetica", "Arial", sans-serif;
+}
+
+.key .key-item b {
+    width: 20px;
+    height: 5px;
+    float: none;
+}
+
+@media screen and (max-width: 500px) {
+  .value text {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .key {
+    display: none;
+  }
+}
