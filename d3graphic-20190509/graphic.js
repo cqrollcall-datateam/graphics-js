@@ -27,11 +27,6 @@ pym.then(function(child) {
 
 });
 
-//Add CSS styles inline for the SVG so that they get exported within the SVG file
-$.get("./graphic.css", function(cssContent){
-  d3.select(".graphic-wrapper svg g").append("defs").append("style").text(cssContent);
-});
-
 var render = function() {
   var container = document.querySelector(".graphic");
   //remove fallback
