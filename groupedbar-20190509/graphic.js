@@ -326,6 +326,7 @@ var renderGroupedBarChart = function(config) {
     d3.select('g.bars:nth-of-type(1) .value text:nth-of-type(1)')
         .text(function(d) {
             return d[valueColumn].toFixed(0) + '%';
+        });
 };
 
 /*
