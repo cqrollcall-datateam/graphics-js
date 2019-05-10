@@ -1,7 +1,7 @@
 {
   "name": "graphics-js",
   "version": "1.0.0",
-  "description": "Graphics created by CQ Roll Call's Data and Graphics team",
+  "description": "Graphics from the CQ Roll Call Data and Graphics Team created using NPR's Daily Graphics Next",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/cqrollcall-datateam/graphics-js#readme",
   "dependencies": {
+    "d3": "^5.9.2",
     "d3-array": "^2.0.3",
     "d3-axis": "^1.0.12",
     "d3-scale": "^3.0.0",
