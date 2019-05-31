@@ -62,12 +62,12 @@ var render = function () {
 // Render a bar chart.
 var renderBarChart = function (config) {
   // Setup
-  var labelColumn = "Representative";
-  var valueColumn = "Number of non-citizens";
+  var labelColumn = "District";
+  var valueColumn = "Number of noncitizens";
 
   var barHeight = 25;
   var barGap = 10;
-  var labelWidth = 235;
+  var labelWidth = 220;
   var labelMargin = 6;
   var valueGap = 6;
 
@@ -222,7 +222,7 @@ var renderBarChart = function (config) {
     .append("text")
     .text(function (d, i) {
       if (i == 0) {
-        return d[valueColumn].toFixed(1) + " K non-citizens"
+        return d[valueColumn].toFixed(1) + " K noncitizens"
       } else {
 
         return d[valueColumn].toFixed(1)

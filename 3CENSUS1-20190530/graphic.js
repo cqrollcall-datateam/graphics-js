@@ -63,11 +63,11 @@ var render = function () {
 var renderBarChart = function (config) {
   // Setup
   var labelColumn = "State";
-  var valueColumn = "Percent of non-citizens";
+  var valueColumn = "Percent of noncitizens";
 
   var barHeight = 30;
   var barGap = 12;
-  var labelWidth = 125;
+  var labelWidth = 155;
   var labelMargin = 6;
   var valueGap = 6;
 
@@ -208,10 +208,10 @@ var renderBarChart = function (config) {
     .append("text")
     .text(function (d, i) {
       if (i == 0) {
-        return d[valueColumn].toFixed(2) + "% non-citizens"
+        return d[valueColumn].toFixed(1) + "% noncitizens"
       } else {
 
-        return d[valueColumn].toFixed(2)
+        return d[valueColumn].toFixed(1)
       }
     })
     .attr("x", d => xScale(d[valueColumn]))
