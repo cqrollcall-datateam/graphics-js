@@ -1,0 +1,84 @@
+<script src="https://kit.fontawesome.com/e47041d205.js"></script>
+
+
+<% if (COPY.labels.headline) { %>
+<h1><%= t.smarty(COPY.labels.headline) %></h1>
+<% } %>
+
+<% if (COPY.labels.subhed) { %>
+<h2><%= t.smarty(COPY.labels.subhed) %></h2>
+<% } %>
+
+<div class="graphic" id="table-graphic">
+  <table id="candidate-positions-table">
+    <thead>
+      <tr>
+        <th>
+          <div class="sorter">
+            <div class="icon"></div>
+          </div>
+          <div class="header"><%= COPY.labels.hdr_candidate %></div>
+        </th>
+        <th>
+          <div class="sorter">
+            <div class="icon"></div>
+          </div>
+          <div class="header"><%= COPY.labels.hdr_singlepay %></div>
+        </th>
+        <th>
+          <div class="sorter">
+            <div class="icon"></div>
+          </div>
+          <div class="header"><%= COPY.labels.hdr_med4a %></div>
+        </th>
+        <th>
+          <div class="sorter">
+            <div class="icon"></div>
+          </div>
+          <div class="header"><%= COPY.labels.hdr_buypub %></div>
+        </th>
+        <!-- <th>
+          <div class="sorter">
+            <div class="icon"></div>
+          </div>
+          <div class="header"><%= COPY.labels.hdr_straca %></div>
+        </th> -->
+        <th>
+          <div class="sorter">
+            <div class="icon"></div>
+          </div>
+          <div class="header"><%= COPY.labels.hdr_details %></div>
+        </th>
+      </tr>
+    </thead>
+
+    <% COPY.data.forEach(function(row) { %>
+    <tr class="candidate-<%= t.classify(row.candidate) %>">
+      <td data-title="<%= COPY.labels.hdr_candidate %>" class="candidate"><%= row.candidate %></td>
+      <td data-title="<%= COPY.labels.hdr_singlepay %>" class="category"><%= row.singlePayer %></td>
+      <td data-title="<%= COPY.labels.hdr_med4a %>" class="category"><%= row.medicareForAm %></td>
+      <td data-title="<%= COPY.labels.hdr_buypub %>" class="category"><%= row.BuyPub %></td>
+      <!-- <td data-title="<%= COPY.labels.hdr_straca %>" class="category"><%= row.strengtheningACA %></td> -->
+      <td data-title="<%= COPY.labels.hdr_details %>" class="details"><%= row.details %></td>
+    </tr>
+    <% }) %>
+
+  </table>
+</div>
+
+<% if (COPY.labels.footnote) { %>
+<div class="footnotes">
+  <h4>Plans are defined as:<br>
+  <%= COPY.labels.footnote %></h4>
+</div>
+<% } %>
+
+<div class="footer">
+  <% if (COPY.labels.source) { %>
+  <p><%= COPY.labels.source %></p>
+  <% } %>
+
+  <% if (COPY.labels.credit) { %>
+  <p> <%= COPY.labels.credit %></p>
+  <% } %>
+</div>
