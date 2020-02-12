@@ -1,0 +1,18 @@
+{
+  "templateSheet": "1Hz-VP4U2021T57FyjLbH5PIWRU_I19YBEkilheJ7I9c",
+  "files": [
+    "*.html",
+    "!_*.html",
+    "graphic.js",
+    "graphic.less",
+    "*.png",
+    "*.jpg",
+    "*.gif",
+    "*.json",
+    "!manifest.json",
+    "*.geojson",
+    "*.csv",
+    "!README.md"
+  ],
+  "sheet": "16PpWkDgPhI47Aa0hbrCJbWDowJKOgcZglkGJK8MzaMI"
+}
