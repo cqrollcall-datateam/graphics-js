@@ -278,11 +278,11 @@ var renderGroupedBarChart = function(config) {
     .enter()
     .append("text")
     .text(function(d) {
-      var v = d[valueColumn].toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","); //add comma to thousands
+      var v = d[valueColumn].toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ","); //add comma to thousands
 
-      if (d[valueColumn] > 0 && v == 0) {
-        v = "<1";
-      }
+      // if (d[valueColumn] > 0 && v == 0) {
+      //   v = "<1";
+      // }
 
       //add measure like % or $ or M in the below line like: + "%"
       //it will appear for all the values except the first one.
@@ -309,7 +309,7 @@ var renderGroupedBarChart = function(config) {
       } else {
         if (xStart + valueGap + textWidth > chartWidth) {
           d3.select(this).classed("in", true);
-          return - (valueGap + textWidth + 20); //pushes in-classed text further in
+          return - (valueGap + textWidth); // adding `+ #` pushes in-classed text further in
         } else {
           d3.select(this).classed("out", true);
           return valueGap;
@@ -321,7 +321,7 @@ var renderGroupedBarChart = function(config) {
     //First bar label/value text is different, we add $ and/or M only to first one.
     d3.select('g.bars:nth-of-type(1) .value text:nth-of-type(1)')
         .text(function(d) {
-            return "$" + d[valueColumn].toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' K'; //the regex adds the comma we want
+            return "$" + d[valueColumn].toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'M'; //the regex adds the comma we want
         });
 };
 

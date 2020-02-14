@@ -219,7 +219,7 @@ var renderBarChart = function (config) {
     .append("text")
     .text(function (d, i) {
       if (i == 0) { 
-        return "$" + d[valueColumn].toFixed(1) + " M" //use this line to create labels on the first unit
+        return "$" + d[valueColumn].toFixed(1) + "M" //use this line to create labels on the first unit
       } else {
 
         return d[valueColumn].toFixed(1) //use the .toFixed() function to specify decimals
