@@ -1,5 +1,5 @@
 {
-  "templateSheet": "1RDnaZmTVbNwgfXgPXTF6jo1MXofsIm1hi2mXkCKnLr0",
+  "templateSheet": "1Hz-VP4U2021T57FyjLbH5PIWRU_I19YBEkilheJ7I9c",
   "files": [
     "*.html",
     "!_*.html",
@@ -11,7 +11,8 @@
     "*.json",
     "!manifest.json",
     "*.geojson",
-    "*.csv"
+    "*.csv",
+    "!README.md"
   ],
-  "sheet": "19PYTmEdFGXyL3tGshEtgoRYet4S8LVRk62ZUaAymco0"
+  "sheet": "1Pebh1YyoNpFzFqtmsAoILrr-3IchF-geUJ4DHwjcsSQ"
 }
