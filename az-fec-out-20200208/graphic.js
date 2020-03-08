@@ -97,8 +97,8 @@ var renderGroupedBarChart = function(config) {
     left: labelWidth + labelMargin
   };
 
-  var ticksX = 7;
-  var roundTicksFactor = 5;
+  var ticksX = 3;
+  var roundTicksFactor = 1;
 
   // Calculate actual chart dimensions
   var chartWidth = config.width - margins.left - margins.right;
@@ -175,31 +175,36 @@ var renderGroupedBarChart = function(config) {
     .attr("transform", `translate(${margins.left},${margins.top})`);
 
   // Create D3 axes.
-  // var xAxis = d3
-  //   .axisBottom()
-  //   .scale(xScale)
-  //   .ticks(ticksX)
-  //   .tickFormat(d => d.toFixed(0) + "%");
-
+  var xAxis = d3
+    .axisBottom()
+    .scale(xScale)
+    .ticks(ticksX)
+    .tickFormat(function (d, i) {
+      if (d == ticksX) {
+        return "$" + d.toFixed(0) + "M" //use this line to create labels on the last x-axis unit, use .toFixed() function to specify decimals
+      } else {
+        return d.toFixed(0) //use the .toFixed() function to specify decimals for all other units
+      }
+    })
   // Render axes to chart.
-  // chartElement
-  //   .append("g")
-  //   .attr("class", "x axis")
-  //   .attr("transform", makeTranslate(0, chartHeight))
-  //   .call(xAxis);
+  chartElement
+    .append("g")
+    .attr("class", "x axis")
+    .attr("transform", makeTranslate(0, chartHeight))
+    .call(xAxis);
 
   // Render grid to chart.
-  // var xAxisGrid = () => xAxis;
+  var xAxisGrid = () => xAxis;
 
-  // chartElement
-  //   .append("g")
-  //   .attr("class", "x grid")
-  //   .attr("transform", makeTranslate(0, chartHeight))
-  //   .call(
-  //     xAxisGrid()
-  //       .tickSize(-chartHeight, 0, 0)
-  //       .tickFormat("")
-  //   );
+  chartElement
+    .append("g")
+    .attr("class", "x grid")
+    .attr("transform", makeTranslate(0, chartHeight))
+    .call(
+      xAxisGrid()
+        .tickSize(-chartHeight, 0, 0)
+        .tickFormat("")
+    );
 
   // Render bars to chart.
   var barGroups = chartElement
@@ -270,59 +275,59 @@ var renderGroupedBarChart = function(config) {
     .text(d => d.key);
 
   // Render bar values.
-  barGroups
-    .append("g")
-    .attr("class", "value")
-    .selectAll("text")
-    .data(d => d.values)
-    .enter()
-    .append("text")
-    .text(function(d) {
-      var v = d[valueColumn].toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ","); //add comma to thousands
+  // barGroups
+  //   .append("g")
+  //   .attr("class", "value")
+  //   .selectAll("text")
+  //   .data(d => d.values)
+  //   .enter()
+  //   .append("text")
+  //   .text(function(d) {
+  //     var v = d[valueColumn].toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ","); //add comma to thousands
 
-      // if (d[valueColumn] > 0 && v == 0) {
-      //   v = "<1";
-      // }
+  //     // if (d[valueColumn] > 0 && v == 0) {
+  //     //   v = "<1";
+  //     // }
 
-      //add measure like % or $ or M in the below line like: + "%"
-      //it will appear for all the values except the first one.
-      return v;
-    })
-    .attr("x", d => xScale(d[valueColumn]))
-    .attr("y", (d, i) => (i ? barHeight * i + barGapInner : 0))
-    .attr("dx", function(d) {
-      var xStart = xScale(d[valueColumn]);
-      var textWidth = this.getComputedTextLength();
+  //     //add measure like % or $ or M in the below line like: + "%"
+  //     //it will appear for all the values except the first one.
+  //     return v;
+  //   })
+  //   .attr("x", d => xScale(d[valueColumn]))
+  //   .attr("y", (d, i) => (i ? barHeight * i + barGapInner : 0))
+  //   .attr("dx", function(d) {
+  //     var xStart = xScale(d[valueColumn]);
+  //     var textWidth = this.getComputedTextLength();
 
-      // Negative case
-      if (d[valueColumn] < 0) {
-        var outsideOffset = -(valueGap + textWidth);
+  //     // Negative case
+  //     if (d[valueColumn] < 0) {
+  //       var outsideOffset = -(valueGap + textWidth);
 
-        if (xStart + outsideOffset < 0) {
-          d3.select(this).classed("in", true);
-          return valueGap;
-        } else {
-          d3.select(this).classed("out", true);
-          return outsideOffset;
-        }
-        // Positive case
-      } else {
-        if (xStart + valueGap + textWidth > chartWidth) {
-          d3.select(this).classed("in", true);
-          return - (valueGap + textWidth); // adding `+ #` pushes in-classed text further in
-        } else {
-          d3.select(this).classed("out", true);
-          return valueGap;
-        }
-      }
-    })
-    .attr("dy", barHeight / 2 + 4);
+  //       if (xStart + outsideOffset < 0) {
+  //         d3.select(this).classed("in", true);
+  //         return valueGap;
+  //       } else {
+  //         d3.select(this).classed("out", true);
+  //         return outsideOffset;
+  //       }
+  //       // Positive case
+  //     } else {
+  //       if (xStart + valueGap + textWidth > chartWidth) {
+  //         d3.select(this).classed("in", true);
+  //         return - (valueGap + textWidth); // adding `+ #` pushes in-classed text further in
+  //       } else {
+  //         d3.select(this).classed("out", true);
+  //         return valueGap;
+  //       }
+  //     }
+  //   })
+  //   .attr("dy", barHeight / 2 + 4);
 
-    //First bar label/value text is different, we add $ and/or M only to first one.
-    d3.select('g.bars:nth-of-type(1) .value text:nth-of-type(1)')
-        .text(function(d) {
-            return "$" + d[valueColumn].toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'M'; //the regex adds the comma we want
-        });
+  //   //First bar label/value text is different, we add $ and/or M only to first one.
+  //   d3.select('g.bars:nth-of-type(1) .value text:nth-of-type(1)')
+  //       .text(function(d) {
+  //           return "$" + d[valueColumn].toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 'M'; //the regex adds the comma we want
+  //       });
 };
 
 /*
