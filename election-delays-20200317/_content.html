@@ -1,0 +1,58 @@
+<% if (COPY.labels.headline) { %>
+<h1><%= t.smarty(COPY.labels.headline) %></h1>
+<% } %>
+
+<% if (COPY.labels.subhed) { %>
+<h2><%= t.smarty(COPY.labels.subhed) %></h2>
+<% } %>
+
+<div class="graphic" id="table-graphic">
+  <table id="state-table" role="table">
+    <thead role="rowgroup">
+      <tr role="row">
+        <th role="columnheader">
+          <div class="sorter"><div class="icon"></div></div>
+          <div class="header"><%= COPY.labels.hdr_state %></div>
+        </th>
+        <th role="columnheader">
+          <div class="sorter"><div class="icon"></div></div>
+          <div class="header"><%= COPY.labels.hdr_date %></div>
+        </th>
+        <th role="columnheader">
+          <div class="sorter"><div class="icon"></div></div>
+          <div class="header"><%= COPY.labels.hdr_race %></div>
+        </th>
+        <th class="amt" role="columnheader">
+          <div class="sorter"><div class="icon"></div></div>
+          <div class="header"><%= COPY.labels.hdr_status %></div>
+        </th>
+      </tr>
+    </thead>
+
+    <% COPY.data.forEach(function(row) { %>
+    <tr class="state-<%= t.classify(row.state) %>" role="row">
+      <td role="cell" data-title="<%= COPY.labels.hdr_state %>"><%= row.state %></td>
+      <td role="cell" data-title="<%= COPY.labels.hdr_date %>"><%= row.date %></td>
+      <td role="cell" data-title="<%= COPY.labels.hdr_race %>"><%= row.race %></td>
+      <td role="cell" data-title="<%= COPY.labels.hdr_status %>" class="amt"><%= row.status %></td>
+    </tr>
+  <% }) %>
+
+  </table>
+</div>
+
+<% if (COPY.labels.footnote) { %>
+<div class="footnotes">
+  <p><%= "Note: " + COPY.labels.footnote %></p>
+</div>
+<% } %>
+
+<div class="footer">
+  <% if (COPY.labels.source) { %>
+  <p><%= "Source: " + COPY.labels.source %></p>
+  <% } %>
+  
+  <% if (COPY.labels.credit) { %>
+  <p><%= COPY.labels.credit + "/CQ Roll Call" %></p>
+  <% } %>
+</div>
