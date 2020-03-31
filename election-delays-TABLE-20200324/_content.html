@@ -1,0 +1,61 @@
+<script src="https://kit.fontawesome.com/e47041d205.js"></script>
+
+<% if (COPY.labels.headline) { %>
+<h1><%= t.smarty(COPY.labels.headline) %></h1>
+<% } %>
+
+<% if (COPY.labels.subhed) { %>
+<h2><%= t.smarty(COPY.labels.subhed) %></h2>
+<% } %>
+<!-- rename as legend -->
+
+
+<div class="graphic" id="table-graphic">
+  <div class="legend">
+    <i class="fas fa-envelope"></i> <p> <%= "Vote by mail" %></p>
+    <i class="fas fa-long-arrow-alt-right"></i> <p> <%= "Election postponed" %> </p>
+    <i class="fas fa-circle gop"></i> <p> <%= "Republican primary" %> </p>
+    <i class="fas fa-circle dem"></i> <p> <%= "Democratic primary" %> </p>
+  </div>
+  <table id="state-table" role="table">
+    <thead role="rowgroup">
+      <tr role="row">
+        <th role="columnheader"><%= COPY.labels.hdr_state %></th>
+        <th role="columnheader" class="right"><%= COPY.labels.hdr_previous %></th>
+        <th role="columnheader" class="middle"><%= COPY.labels.hdr_status %></th>
+        <th role="columnheader" class="left"><%= COPY.labels.hdr_current %></th>
+        <th role="columnheader"><%= COPY.labels.hdr_type %></th>
+        <th role="columnheader" class="middle"><%= COPY.labels.hdr_party %></th>
+      </tr>
+    </thead>
+
+    <% COPY.data.forEach(function(row) { %>
+    <tr class="state-<%= t.classify(row.state) %>" role="row">
+      <td role="cell" data-title="<%= COPY.labels.hdr_state %>"><%= row.state %></td>
+      <td role="cell" class="right" data-title="<%= COPY.labels.hdr_previous %>" data-sort-method='date'><%= row.previous %></td>
+      <td role="cell" class="middle" data-title="<%= COPY.labels.hdr_status %>"><%= row.status %></td>
+      <td role="cell" class="left" data-title="<%= COPY.labels.hdr_current %>" data-sort-method='date'><%= row.current %></td>
+      <td role="cell" data-title="<%= COPY.labels.hdr_type %>"><%= row.type %></td>
+      <td role="cell" class="middle" data-title="<%= COPY.labels.hdr_party %>"><%= row.party %></td>
+
+    </tr>
+    <% }) %>
+
+  </table>
+</div>
+
+<% if (COPY.labels.footnote) { %>
+<div class="footnotes">
+  <p><%= "Note: " + COPY.labels.footnote %></p>
+</div>
+<% } %>
+
+<div class="footer">
+  <% if (COPY.labels.source) { %>
+  <p><%= "Source: " + COPY.labels.source %></p>
+  <% } %>
+
+  <% if (COPY.labels.credit) { %>
+  <p><%= COPY.labels.credit + "/CQ Roll Call" %></p>
+  <% } %>
+</div>

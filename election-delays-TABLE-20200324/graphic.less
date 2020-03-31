@@ -1,0 +1,275 @@
+@import "./lib/base";
+
+// font-awesome icons
+i {
+  color: #808284;
+  font-size: 1.5em;
+}
+
+i.fas.fa-circle.dem {
+  color: #005383;
+}
+
+i.fas.fa-circle.gop {
+  color: #C62C31;
+}
+
+//legend
+.legend {
+  display: flex;
+  margin: 20px 0 20px 0;
+}
+
+.legend i {
+  font-size: 1em;
+  align-self: center;
+}
+
+.legend p,
+.legend p {
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  font-family: 'GothamNarrow-Book', 'Helvetica', 'Arial', sans-serif;
+  margin: 0 0 0 6px;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #231F20;
+}
+
+.legend p {
+  font-style: normal;
+}
+
+.legend p em {
+  font-style: normal;
+}
+
+.legend p strong {
+  color: #231F20;
+}
+
+// Base table styles
+table {
+  border-collapse: collapse;
+  padding: 0;
+  width: 100%;
+  font-size: 12px;
+  color: #666;
+
+  tr.shadedrow {
+    background-color: #f1f1f1;
+    color: #333;
+    font-weight: bold;
+  }
+
+  th {
+    .gotham-narrow-bold();
+    line-height: 1.2;
+    text-align: left;
+    vertical-align: bottom;
+  }
+
+  // td {
+  //   vertical-align: middle;
+  // }
+
+  td.category {
+    .gotham-narrow-medium();
+    font-size: 1.5em;
+    color: #444446;
+
+  }
+
+  tr {
+    &:last-child {
+      border-bottom: hidden;
+    }
+  }
+}
+
+/*
+* larger-than-small-screen styles
+* ~ defining some desktop-only styles here to avoid
+* ~ writing extra mobile styles to undo them.
+*/
+@media @screen-mobile-above {
+  table {
+
+    td.center {
+      text-align: center;
+    }
+
+    th,
+    td {
+      padding: 10px;
+
+      // comment these two out if you want to highlight particular rows
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+
+      &.right {
+        text-align: right;
+      }
+
+      &.middle {
+        text-align: center;
+      }
+
+      &.left {
+        text-align: left;
+      }
+    }
+
+    th {
+      border-bottom: 2px solid #eee;
+      padding-top: 0;
+    }
+
+    td {
+      border-bottom: 1px solid #eee;
+      // text-align: center;
+
+    }
+
+    //tablesorter styles
+    th[role=columnheader]:not(.no-sort) {
+      cursor: pointer;
+    }
+
+    th[role=columnheader]:not(.no-sort):after {
+      content: '';
+      position: absolute;
+      float: right;
+      text-align: right;
+      clear: both;
+      margin-top: 7px;
+      margin-left: 7px;
+      border-width: 0 4px 4px;
+      border-style: solid;
+      border-color: #404040 transparent;
+      visibility: hidden;
+      opacity: 0;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    th[aria-sort=ascending]:not(.no-sort):after {
+      border-bottom: none;
+      border-width: 4px 4px 0;
+    }
+
+    th[aria-sort]:not(.no-sort):after {
+      visibility: visible;
+      opacity: 0.4;
+
+    }
+
+    th[role=columnheader]:not(.no-sort):after {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+/*
+* small-screen styles
+*/
+@media @screen-mobile {
+  i {
+    font-size: 1em;
+  }
+
+
+  tbody {
+    display: block;
+    width: 100%;
+  }
+
+  table {
+    thead {
+      display: none;
+    }
+
+    tr,
+    th,
+    td {
+      display: block;
+      padding: 0;
+      white-space: normal;
+    }
+
+    tr {
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+
+      &:first-child {
+        border-top: 1px solid #eee hidden;
+      }
+
+      &:last-child {
+        border-bottom: hidden;
+      }
+    }
+
+    td {
+      margin-bottom: 6px;
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    tr td:first-child {
+      .gotham-narrow-medium();
+      color: #333;
+      font-size: 14px;
+      margin-bottom: 6px;
+
+      &:before {
+        content: '';
+        display: none;
+      }
+    }
+
+    th[data-title]:before,
+    td[data-title]:before {
+      content: attr(data-title) ":\00A0";
+      .gotham-narrow-medium();
+      margin-right: 10px;
+      width: 70%;
+    }
+  }
+
+  //legend
+  .legend {
+    display: flex;
+    margin: 20px 0 20px 0;
+  }
+
+  .legend i {
+    font-size: 1em;
+    align-self: center;
+  }
+
+  .legend p,
+  .legend p {
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    font-family: 'GothamNarrow-Book', 'Helvetica', 'Arial', sans-serif;
+    margin: 0 0 0 6px;
+    font-size: 12px;
+    line-height: 1.25;
+    color: #231F20;
+  }
+
+
+}
