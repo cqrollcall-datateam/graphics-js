@@ -182,7 +182,7 @@ var renderStateGridMap = function(config) {
     .attr("text-anchor", "middle")
     .text(function(d) {
       var state = STATES.filter(s => s.name == d.state_name).pop();
-      return isMobile.matches ? state.usps : state.ap;
+      return isMobile.matches ? state.usps : state.usps;
     })
     .attr("class", d =>
       d[valueColumn] !== null
